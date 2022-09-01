@@ -3,15 +3,18 @@ class ProductsController < ApplicationController
     product = Product.all
     render json: product.as_json
   end
+
   def create
     product = Product.new(
-      name: "Orange"
-      price: 4
-      images_url: "wwww.orange4.com"
-      description: "citrus"
+      name: params["name"],
+      price: params["price"],
+      image_url: params["image_url"],
+      description: params["description"],
     )
     product.save
     render json: product.as_json
+  end
+
   def show
     product = Product.find_by(id: params["id"])
     render json: product.as_json
@@ -31,7 +34,9 @@ class ProductsController < ApplicationController
     product = Product.third
     render json: product.as_json
   end
+
   def one_product_method
     product = Product.find_by(id: params["id"])
     render json: product.as_json
+  end
 end
