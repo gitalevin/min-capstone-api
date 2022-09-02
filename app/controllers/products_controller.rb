@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
     product.price = params["price"] || product.price
     product.image_url = params["image_url"] || product.image_url
     product.description = params["description"] || product.description
+    @product = product
     product.save
     render json: product.as_json
   end
@@ -32,8 +33,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    product = Product.find_by(id: params["id"])
-    render json: product.as_json(methods: [:friendly_created_at, :is_discounted?, :tax, :total])
+    @product = Product.find_by(id: params["id"])
+    render template: "products/show"
   end
 
   def apple_products_method
