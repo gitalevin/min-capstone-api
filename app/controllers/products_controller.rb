@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
     product = Product.all
-    render json: product.as_json
+    render template: "products/index"
   end
 
   def create
@@ -12,7 +12,12 @@ class ProductsController < ApplicationController
       description: params["description"],
     )
     product.save
-    render json: product.as_json
+    render template: "products/show"
+  end
+
+  def show
+    @product = Product.find_by(id: params["id"])
+    render template: "products/show"
   end
 
   def update
@@ -23,37 +28,12 @@ class ProductsController < ApplicationController
     product.description = params["description"] || product.description
     @product = product
     product.save
-    render json: product.as_json
+    render template: "products/show"
   end
 
   def destroy
     product = Product.find_by(id: params["id"])
     product.destroy
     render json: { message: "Product successfully destroyed!" }
-  end
-
-  def show
-    @product = Product.find_by(id: params["id"])
-    render template: "products/show"
-  end
-
-  def apple_products_method
-    product = Product.first
-    render json: product.as_json
-  end
-
-  def mango_products_method
-    product = Product.second
-    render json: product.as_json
-  end
-
-  def banana_products_method
-    product = Product.third
-    render json: product.as_json
-  end
-
-  def one_product_method
-    product = Product.find_by(id: params["id"])
-    render json: product.as_json
   end
 end
