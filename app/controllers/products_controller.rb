@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    product = Product.all
+    @products = Product.all
     render template: "products/index"
   end
 
@@ -11,8 +11,12 @@ class ProductsController < ApplicationController
       image_url: params["image_url"],
       description: params["description"],
     )
-    product.save
-    render template: "products/show"
+    @product = product
+    if product.save
+      render template: "products/show"
+    else
+      render json: { errors: @product.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -29,6 +33,11 @@ class ProductsController < ApplicationController
     @product = product
     product.save
     render template: "products/show"
+    if @product.valid?
+      render template: "product/show"
+    else
+      render json: { message: "Hey, something went wrong!", errors: @product.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def destroy

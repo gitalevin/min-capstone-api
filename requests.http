@@ -12,7 +12,7 @@ Content-Type: application/json
   "name": "melon",
   "price": 5,
   "image_url": "wwww.melon5.com",
-  "description": "yellow"
+  "description": "yellow melon"
 }
 
 ###Product update
@@ -25,4 +25,4 @@ Content-Type: application/json
 }
 
 ### Products destroy
-DELETE  http://localhost:3000/products/5.json
+DELETE  http://localhost:3000/products/10.json
