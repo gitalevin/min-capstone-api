@@ -11,3 +11,7 @@ product = Product.new(name: "mango", price: "3", image_url: "www.mango3.com", de
 product.save
 product = Product.new(name: "banana", price: "5", image_url: "www.banana4.com", description: "ripe")
 product.save
+
+supplier = Supplier.new(name: "Store1", email: "store1.test.com", phone_number: "1231231234")
+supplier = Supplier.new(name: "Store2", email: "store2.test.com", phone_number: "1231231235")
+supplier = Supplier.new(name: "Store3", email: "store3.test.com", phone_number: "1231231236")
