@@ -8,6 +8,12 @@ class Product < ApplicationRecord
   validates :description, length: { in: 10..500 }
   # validates_format_of :image_url, :with => %r{\.(png|jpg|jpeg)$}i
   # validates :image_url, :url => true
+  belongs_to :supplier
+  has_many :images
+
+  # def suppliers
+  #   Supplier.find_by(id: supplier_id)
+  # end
 
   def friendly_created_at
     created_at.strftime("%B %e, %Y")

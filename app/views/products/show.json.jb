@@ -3,9 +3,9 @@
   name: @product.name,
   price: @product.price,
   description: @product.description,
-  image_url: @product.image_url,
   is_discounted?: @product.is_discounted?,
   created_at: @product.created_at,
   updated_at: @product.updated_at,
-
+  supplier: @supplier,
+  images: @product.images,
 }
