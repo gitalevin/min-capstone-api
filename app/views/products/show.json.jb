@@ -8,4 +8,6 @@
   updated_at: @product.updated_at,
   supplier: @supplier,
   images: @product.images,
+  categories: @product.categories,
+
 }

@@ -1,3 +1,31 @@
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjcwMDM3ODB9.4Xr52IbWGPyDPrylKwg8pcadMm2BgRwKDu7BwMq5f3g
+
+### Sessions create (login)
+POST http://localhost:3000/sessions.json
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password"
+}
+
+
+
+### Orders create (signup)
+POST http://localhost:3000/orders.json
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+{
+  "product_id": "1",
+  "quantity": "1"
+}
+
+### Orders SHOW
+GET http://localhost:3000/orders/1.json
+Authorization: Bearer {{jwt}}
+
+
 ### Users create (signup)
 POST http://localhost:3000/users.json
 Content-Type: application/json
@@ -9,14 +37,16 @@ Content-Type: application/json
   "password_confirmation": "password"
 }
 
-### Products index
+### PRODUCTS INDEX
 GET http://localhost:3000/products.json
 
 ### Products show
 GET http://localhost:3000/products/1.json
+Authorization: Bearer {{jwt}}
 
 ### Products create
 POST http://localhost:3000/products.json
+Authorization: Bearer {{jwt}}
 Content-Type: application/json
 
 {
@@ -27,6 +57,7 @@ Content-Type: application/json
 
 ###Product update
 PATCH http://localhost:3000/products/9.json
+Authorization: Bearer {{jwt}}
 Content-Type: application/json
 
 {
@@ -36,3 +67,4 @@ Content-Type: application/json
 
 ### Products destroy
 DELETE  http://localhost:3000/products/10.json
+Authorization: Bearer {{jwt}}

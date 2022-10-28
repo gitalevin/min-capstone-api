@@ -10,5 +10,6 @@
     created_at: product.created_at,
     updated_at: product.updated_at,
     images: product.images,
+    categories: product.categories,
   }
 end

@@ -10,6 +10,9 @@ class Product < ApplicationRecord
   # validates :image_url, :url => true
   belongs_to :supplier
   has_many :images
+  has_many :orders
+  has_many :category_products
+  has_many :categories, through: :category_products
 
   # def suppliers
   #   Supplier.find_by(id: supplier_id)
